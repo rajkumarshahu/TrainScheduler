@@ -11,32 +11,40 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+   />
 
-
-
+  <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- Added Moment JS -->
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
-
-
     <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
 
     <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
+
   </head>
   <body>
     <div class="container">
-      <div class="jumbotron text-center display-4">Train Scheduler</div>
-      <div class="alert-danger p-2 text-center"></div>
+      <div class="jumbotron text-center display-4 bg-dark text-light">Train Scheduler</div>
+
       <div class="row">
         <div class="col-lg-9 col-sm-12 col-md-12 col-xm-12 mt-2">
-          <div class="card">
-            <div class="card-header">
-              Current Train Schedule
+          <div class="card bg-dark text-light border rounded">
+            <div class="card-header p-4 row">
+
+              <div class="col-6">
+                  Current Train Schedule
+              </div>
+              <div class="col-6">
+                  <div class="alert-div"></div>
+              </div>
             </div>
             <div class="card-body">
-              <table class="table">
+              <table class="table table-hover table-dark">
                 <thead>
                   <tr>
                     <th scope="col">Train Name</th>
@@ -44,24 +52,39 @@
                     <th scope="col">Frequency (min)</th>
                     <th scope="col">Next Arrival</th>
                     <th scope="col">Minutes away</th>
+                    <th scope="col" class="text-center"></th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody class="data-container">
 
                 </tbody>
               </table>
+              <form class="input-form" id='edit-form'>
+                <table class="table table-hover table-dark">
+                  <tr>
+                    <td><input type="text" id="e-name-input" /></td>
+                    <td><input type="text" id="e-destination-input" /></td>
+                    <td><input type="text" id="e-first-train-input" /></td>
+                    <td><input type="text" id="e-frequency-input" /></td>
+                    <td><button type="submit" id="e-submit-btn" class="btn btn-primary">submit</button></td>
+                  </tr>
+                </table>
+              </form>
             </div>
           </div>
         </div>
+
         <div class="col-lg-3 col-sm-12 col-md-12 col-xm-12 mt-2">
-          <div class="card">
+          <div class="card bg-dark text-light border rounded">
+              <div class="current-time text-center border rounded bg-dark text-light"></div>
             <div class="card-header">
               Add Train
             </div>
+
             <div class="card-body">
-              <form>
+              <form class="input-form">
                 <div class="form-group">
-                  <label for="train-name">Train Name: </label>
+                  <label for="train-name">Train Name:</label>
                   <input
                     type="text"
                     class="form-control"
@@ -91,7 +114,7 @@
                 <div class="form-group">
                   <label for="first-train">Frequency (min): </label>
                   <input
-                    type="text"
+                    type="number"
                     class="form-control"
                     id="frequency-input"
                   />
@@ -103,6 +126,7 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
 

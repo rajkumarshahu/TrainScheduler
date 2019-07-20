@@ -1,0 +1,14 @@
+body{
+    background-image: url("../images/bg-image.jpg");
+    width: 100%;
+    background-size: cover;
+    background-repeat: repeat;
+}
+
+.display-4{
+    padding:20px;
+}
+
+.jumbotron{
+    margin-bottom: 5px;
+}

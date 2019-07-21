@@ -18,14 +18,15 @@ let config = {
   let frequency = 0;
 
 function currentTime() {
-  var current = moment().format('LT');
+  let current = moment().format('LT');
   $(".current-time").html(`${current}`);
+  setTimeout(currentTime, 1000);
 };
 
 
 $("#submit-btn").on("click", e => {
   let timeStr = $("#first-train-input").val().trim();
-  let valid = (timeStr.search(/^\d{2}:\d{2}$/) != -1) &&
+  let validTimeStr = (timeStr.search(/^\d{2}:\d{2}$/) != -1) &&
             (timeStr.substr(0,2) >= 0 && timeStr.substr(0,2) <= 24) &&
             (timeStr.substr(3,2) >= 0 && timeStr.substr(3,2) <= 59);
 
@@ -44,9 +45,9 @@ $("#submit-btn").on("click", e => {
       .trim() === "" ||
       $("#first-train-input").val().trim() === ""
   ) {
-    $(".alert-div").html(`<div class="alert-danger border rounded text-center">Some of your inputs are missing!!!</div>`);
+    $(".alert-div").html(`<div class="alert-danger text-center">Some of your inputs are missing!!!</div>`);
     return false;
-  } else if(valid) {
+  } else if(validTimeStr) {
     name = $("#name-input")
       .val()
       .trim();
@@ -69,9 +70,10 @@ $("#submit-btn").on("click", e => {
       frequency: frequency,
       dateAdded: firebase.database.ServerValue.TIMESTAMP,
     });
+    $(".alert-div").html(`<div class="alert-success text-center">Schedule added successfully!!!</div>`);
     return true;
   }else{
-    $(".alert-div").html(`<div class="alert-danger p-2 text-center">Invalid train time format!!!</div>`);
+    $(".alert-div").html(`<div class="alert-danger text-center">Invalid First Train Time format!!!</div>`);
     return false;
   }
 });
@@ -139,7 +141,7 @@ $("#submit-btn").on("click", e => {
   dateAdded: firebase.database.ServerValue.TIMESTAMP,
 });*/
 
-setTimeout(currentTime, 1000);
+currentTime();
 
 $(document).on("click", ".remove", function() {
   if(confirm('Are you sure you want to delete this?')){

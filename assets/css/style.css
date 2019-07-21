@@ -7,8 +7,17 @@ body{
 
 .display-4{
     padding:20px;
+    font-family: 'Yatra One', cursive;
 }
 
 .jumbotron{
     margin-bottom: 5px;
+}
+.current-time{
+    font-family: 'Black Ops One', cursive;
+    font-size:30px;
+}
+.card-header{
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
 }

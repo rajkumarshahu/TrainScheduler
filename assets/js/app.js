@@ -14,8 +14,8 @@ let config = {
 
   let trainName = "";
   let destination = "";
-  let startTime = "";
-  let frequency = 0;
+  let firstTime = "";
+  let tFrequency = 0;
 
 function currentTime() {
   let current = moment().format('LT');
@@ -98,8 +98,8 @@ let populateTrainSchedule = function (snapshot) {
   let newPost = snapshot.val();
     trainName = newPost.name;
     destination = newPost.destination;
-    let firstTime = newPost.firstTrainTime;
-    let tFrequency = newPost.frequency;
+    firstTime = newPost.firstTrainTime;
+    tFrequency = newPost.frequency;
     let firstTimeConverted = moment(firstTime, "LT").subtract(1, "years");
     let diffTime = moment().diff(moment(firstTimeConverted), "minutes");
     let tRemainder = diffTime % tFrequency;
